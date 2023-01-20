@@ -10,6 +10,20 @@ module.exports.UsersController = {
       return res.json(error.message);
     }
   },
+
+patchuser: async (req, res ) => {
+try {
+  const user = await User.findByIdAndUpdate( req.params.id ,
+    { login: req.body.login,
+    avatar: req.body.avatar,
+  aboutme: req.body.aboutme},
+    { new: true })
+    return res.json(user)
+} catch (error) {
+  return res.json(error.message);
+}
+},
+
   userscreate: async (req, res) => {
     const user = await User.findOne({ login: req.body.login });
     if (user) {
@@ -48,4 +62,13 @@ module.exports.UsersController = {
     });
     return res.json({ token });
   },
+  uploadavatar: (req, res) => {
+    req.files.image.mv(`./public/${req.files.image.name}`, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json("файл загружен")
+      }
+    })
+  }
 };
