@@ -1,8 +1,16 @@
 const Post = require("../model/post.model");
 module.exports.PostsController = {
-  getposts: async (req, res) => {
+  getpostsuserid: async (req, res) => {
     try {
       const posts = await Post.find({ userid: req.params.userid });
+      return res.json(posts);
+    } catch (error) {
+      return res.json(error.message);
+    }
+  },
+  getposts: async (req, res) => {
+    try {
+      const posts = await Post.find();
       return res.json(posts);
     } catch (error) {
       return res.json(error.message);
