@@ -11,18 +11,22 @@ module.exports.UsersController = {
     }
   },
 
-patchuser: async (req, res ) => {
-try {
-  const user = await User.findByIdAndUpdate( req.params.id ,
-    { login: req.body.login,
-    avatar: req.body.avatar,
-  aboutme: req.body.aboutme},
-    { new: true })
-    return res.json(user)
-} catch (error) {
-  return res.json(error.message);
-}
-},
+  patchuser: async (req, res) => {
+    try {
+      const user = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          login: req.body.login,
+          avatar: req.body.avatar,
+          aboutme: req.body.aboutme,
+        },
+        { new: true }
+      );
+      return res.json(user);
+    } catch (error) {
+      return res.json(error.message);
+    }
+  },
 
   userscreate: async (req, res) => {
     const user = await User.findOne({ login: req.body.login });
@@ -67,8 +71,8 @@ try {
       if (err) {
         console.log(err);
       } else {
-        res.json("файл загружен")
+        res.json("файл загружен");
       }
-    })
-  }
+    });
+  },
 };
