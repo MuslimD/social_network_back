@@ -13,7 +13,6 @@ module.exports = async (req, res, next) => {
   try {
     req.user = await jwt.verify(token, process.env.SECRET_JWT_KEY);
     next();
-    console.log(req.body);
   } catch (error) {
    
     return res.status(401).json("Неверный токен");

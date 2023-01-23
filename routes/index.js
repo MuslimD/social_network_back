@@ -8,4 +8,5 @@ router.use("/messages", require("./messages.route"))
 router.use("/users", require("./users.route"));
 router.use("/posts", require("./posts.route"))
 router.use("/comments", require("./comments.route"))
+router.use("/chats", require("./chats.route"))
 module.exports = router;
