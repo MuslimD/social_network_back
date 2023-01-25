@@ -1,12 +1,11 @@
 const Message = require("../model/message.model");
 module.exports.MessagesController = {
   getmessage: async (req, res) => {
-    
     try {
       const messages = await Message.find({
         chatsid: req.params.chatsid,
-        
       });
+      
       return res.json(messages);
     } catch (error) {
       return res.json(error.message);

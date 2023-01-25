@@ -2,9 +2,9 @@ const Follows = require("../model/follows.model");
 module.exports.FollowsController = {
   getfollows: async (req, res) => {
     try {
-      const follows = await Follows.find({
+      const follows = await Follows.findOne({
         userid: req.params.userid,
-      }).populate("follows");
+    }).populate("follows");
 
       return res.json(follows);
     } catch (error) {
