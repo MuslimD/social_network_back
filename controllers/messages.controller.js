@@ -15,6 +15,7 @@ module.exports.MessagesController = {
     try {
       const message = await Message.create({
         chatsid: req.params.chatsid,
+        sender: req.body.sender,
         text: req.body.text,
         data: req.body.data,
       });
